@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Google Reviews Widget</title>
+  <script src="https://maps.googleapis.com/maps/api/js?key=SUA_CHAVE_DA_API&libraries=places"></script>
+  <script>
+    function initMap() {
+      var service = new google.maps.places.PlacesService(document.createElement('div'));
+      service.getDetails({
+        placeId: 'ID_DO_LUGAR'
+      }, function(place, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          var reviewsContainer = document.getElementById('google-reviews');
+          var reviews = place.reviews.slice(0, 5); // Pegue as 5 principais avaliações
+          reviews.forEach(function(review) {
+            var reviewDiv = document.createElement('div');
+            reviewDiv.innerHTML = '<p><strong>' + review.author_name + '</strong>: ' + review.text + '</p>';
+            reviewsContainer.appendChild(reviewDiv);
+          });
+        }
+      });
+    }
+  </script>
+</head>
+<body onload="initMap()">
+  <div id="google-reviews"></div>
+</body>
+</html>
