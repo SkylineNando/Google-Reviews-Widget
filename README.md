@@ -1,14 +1,14 @@
 # Google-Reviews-Widget
 
-Este widget exibe as 10 principais avaliações do Google para o Hotel Recanto Verde, incluindo o nome do autor, sua foto de perfil, a classificação em estrelas e o texto da avaliação.
+Este widget exibe as 5 principais avaliações do Google, incluindo o nome do autor, sua foto de perfil, a classificação em estrelas e o texto da avaliação.
 
-Como usar
+## Como usar
 
-Obtenha a chave da API do Google Places: Para usar este widget, você precisará de uma chave da API do Google Places. Você pode obter uma no Google Cloud Console.
+Obtenha a chave da API do Google Places: Para usar este widget, você precisará de uma chave da API do Google Places. Você pode obter uma no <a href="https://cloud.google.com">Google Cloud Console</a>.
 
-Encontre o Place ID do Hotel Recanto Verde: Use a Ferramenta de Place ID do Google para encontrar o Place ID do hotel.
+Encontre o Place ID: Use a Ferramenta de <a href="https://developers.google.com/maps/documentation/javascript/place-id?hl=pt-br">Place ID do Google</a> para encontrar o Place ID.
 
-Inclua o widget no seu site: Adicione o seguinte código HTML ao seu site, substituindo SUA_CHAVE_DA_API pela sua chave da API do Google Places e ID_DO_LUGAR pelo Place ID do Hotel Recanto Verde.
+Inclua o widget no seu site: Adicione o seguinte código HTML ao seu site, substituindo ```SUA_CHAVE_DA_API``` pela sua chave da API do Google Places e ```ID_DO_LUGAR``` pelo Place ID.
 
 ```html
 Copy code
@@ -29,16 +29,16 @@ Copy code
 </body>
 </html>
 ```
-Personalização
+## Personalização
 
-Estilos: Você pode personalizar os estilos do widget editando as regras CSS dentro da tag <style> no código fornecido.
-Número de avaliações: Por padrão, o widget exibe as 10 principais avaliações. Você pode alterar esse número modificando o valor passado para o método slice() na variável reviews no código JavaScript.
+Estilos: Você pode personalizar os estilos do widget editando as regras CSS dentro da tag ```<style>``` no código fornecido.
+Número de avaliações: Por padrão, o widget exibe as 5 principais avaliações. Você pode alterar esse número modificando o valor passado para o método slice() na variável reviews no código JavaScript.
 
-Limitações
+## Limitações
 
 O widget depende da API do Google Places, que possui limites de uso e pode incorrer em custos se excedidos.
 As avaliações exibidas são determinadas pelo Google e podem não representar todas as avaliações disponíveis para o local.
 
-Suporte
+## Suporte
 
 Para obter ajuda com este widget ou para relatar problemas, entre em contato com o desenvolvedor ou consulte a documentação da API do Google Places.
