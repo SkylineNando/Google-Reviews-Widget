@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Google Reviews Widget</title>
+  <script src="https://maps.googleapis.com/maps/api/js?key=SUA_CHAVE_DA_API&libraries=places"></script>
+  <style>
+    .reviews-container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .review {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+    .review:last-child {
+      border-bottom: none;
+    }
+    .review img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+      float: left;
+    }
+    .review-text {
+      overflow: hidden;
+    }
+    .review-text strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .stars {
+      color: #f4c150;
+    }
+  </style>
+  <script>
+    function initMap() {
+      var service = new google.maps.places.PlacesService(document.createElement('div'));
+      service.getDetails({
+        placeId: 'ID_DO_LUGAR'
+      }, function(place, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          var reviewsContainer = document.getElementById('google-reviews');
+          var reviews = place.reviews.slice(0, 5); // Pegue as 5 principais avaliações
+          reviews.forEach(function(review) {
+            var reviewDiv = document.createElement('div');
+            reviewDiv.classList.add('review');
+            var profileImg = review.profile_photo_url ? '<img src="' + review.profile_photo_url + '" alt="Profile Image">' : '';
+            var stars = '<div class="stars">' + getStars(review.rating) + '</div>';
+            reviewDiv.innerHTML = profileImg + '<div class="review-text"><strong>' + review.author_name + '</strong>' + stars + review.text + '</div>';
+            reviewsContainer.appendChild(reviewDiv);
+          });
+        }
+      });
+    }
+
+    function getStars(rating) {
+      var stars = '';
+      for (var i = 1; i <= 5; i++) {
+        stars += i <= rating ? '★' : '☆';
+      }
+      return stars;
+    }
+  </script>
+</head>
+<body onload="initMap()">
+  <div class="reviews-container" id="google-reviews"></div>
+</body>
+</html>
